@@ -95,8 +95,10 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
     try:
         result = int(first_value)*int(second_value)
         return result
+    except ValueError:
+        raise ValueError("Not valid input data!")
     except TypeError:
-        print("Not valid input data!")
+        raise TypeError("Not valid input data!")
 
 
 def is_word_in_text(word: str, text: str) -> bool:
