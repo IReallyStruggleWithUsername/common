@@ -4,6 +4,7 @@ This is a list of functions that should be completed.
 
 from typing import Any
 from typing import List
+from string import ascii_lowercase
 
 
 class OurAwesomeException(Exception):
@@ -15,8 +16,7 @@ def is_two_object_has_same_value(first_value: Any, second_value: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    result = first_value == second_value
-    return result
+    return first_value == second_value
 
 
 def is_two_objects_has_same_type(first_value: Any, second_value: Any) -> bool:
@@ -24,8 +24,7 @@ def is_two_objects_has_same_type(first_value: Any, second_value: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    result = type(first_value) == type(second_value)
-    return result
+    return type(first_value) == type(second_value)
 
 
 def is_two_objects_is_the_same_objects(first_value: Any, second_value: Any) -> bool:
@@ -33,8 +32,7 @@ def is_two_objects_is_the_same_objects(first_value: Any, second_value: Any) -> b
     If @first and @second has same type should return True
     In another case should return False
     """
-    result = first_value is second_value
-    return result
+    return first_value is second_value
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -51,12 +49,10 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    result = first_value*second_value
-
     if type(first_value) != int or type(second_value) != int:
         raise ValueError
     else:
-        return result
+        return first_value*second_value
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -87,12 +83,9 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
         >>> "Not valid input data"
     """
     try:
-        result = int(first_value)*int(second_value)
-        return result
-    except ValueError:
+        return int(first_value)*int(second_value)
+    except (ValueError, TypeError):
         raise ValueError("Not valid input data!")
-    except TypeError:
-        raise TypeError("Not valid input data!")
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -111,21 +104,14 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    if word in text.split():
-        return True
-    else:
-        return False
+    return word in text.split()
 
 
 def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
-    result = []
-    for i in range(13):
-        if i != 6 and i != 7:
-            result.append(i)
-    return result
+    return [i for i in range(13) if i != 6 and i != 7]
 
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
@@ -139,7 +125,6 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
     """
     data = [i for i in data if i >= 0]
     return data
-    pass
 
 
 def alphabet() -> dict:
@@ -150,14 +135,7 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    alph = [chr(i) for i in range(ord('a'), ord('z') + 1)]
-    info = []
-    p = 1
-    for i in alph:
-        info.append((p, i))
-        p += 1
-    result = dict(info)
-    return result
+    return dict(zip(range(1, 27), ascii_lowercase))
 #   test asks for numbers as keys so i did that
 
 
