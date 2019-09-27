@@ -15,10 +15,8 @@ def is_two_object_has_same_value(first_value: Any, second_value: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    if first_value == second_value:
-        return True
-    else:
-        return False
+    result = first_value == second_value
+    return result
 
 
 def is_two_objects_has_same_type(first_value: Any, second_value: Any) -> bool:
@@ -26,10 +24,8 @@ def is_two_objects_has_same_type(first_value: Any, second_value: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    if type(first_value) == type(second_value):
-        return True
-    else:
-        return False
+    result = type(first_value) == type(second_value)
+    return result
 
 
 def is_two_objects_is_the_same_objects(first_value: Any, second_value: Any) -> bool:
@@ -37,10 +33,8 @@ def is_two_objects_is_the_same_objects(first_value: Any, second_value: Any) -> b
     If @first and @second has same type should return True
     In another case should return False
     """
-    if first_value is second_value:
-        return True
-    else:
-        return False
+    result = first_value is second_value
+    return result
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
