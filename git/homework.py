@@ -4,34 +4,35 @@ This is a list of functions that should be completed.
 
 from typing import Any
 from typing import List
+from string import ascii_lowercase
 
 
 class OurAwesomeException(Exception):
     pass
 
 
-def is_two_object_has_same_value(first: Any, second: Any) -> bool:
+def is_two_object_has_same_value(first_value: Any, second_value: Any) -> bool:
     """
     If @first and @second has same value should return True
     In another case should return False
     """
-    pass
+    return first_value == second_value
 
 
-def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
+def is_two_objects_has_same_type(first_value: Any, second_value: Any) -> bool:
     """
     If @first and @second has same type should return True
     In another case should return False
     """
-    pass
+    return type(first_value) == type(second_value)
 
 
-def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
+def is_two_objects_is_the_same_objects(first_value: Any, second_value: Any) -> bool:
     """
     If @first and @second has same type should return True
     In another case should return False
     """
-    pass
+    return first_value is second_value
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -48,7 +49,10 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    pass
+    if type(first_value) != int or type(second_value) != int:
+        raise ValueError
+    else:
+        return first_value*second_value
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -78,7 +82,10 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
             print("Not valid input data")
         >>> "Not valid input data"
     """
-    pass
+    try:
+        return int(first_value)*int(second_value)
+    except (ValueError, TypeError):
+        raise ValueError("Not valid input data!")
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -97,14 +104,14 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    pass
+    return word in text.split()
 
 
 def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
-    pass
+    return [i for i in range(13) if i != 6 and i != 7]
 
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
@@ -116,7 +123,8 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    pass
+    data = [i for i in data if i >= 0]
+    return data
 
 
 def alphabet() -> dict:
@@ -127,7 +135,8 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    pass
+    return dict(zip(range(1, 27), ascii_lowercase))
+#   test asks for numbers as keys so i did that
 
 
 def simple_sort(data: List[int]) -> List[list]:
@@ -139,4 +148,8 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    pass
+    for i in range(len(data)):
+        for x in range(i, len(data)):
+            if data[i] > data[x]:
+                data[i], data[x] = data[x], data[i]
+    return data
